@@ -1,0 +1,1799 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#163b66">
+  <title>Вводные слова и конструкции — тренажёр</title>
+  <style>
+    :root {
+      --navy: #163b66;
+      --navy-2: #0f2d4e;
+      --blue: #2b6fb3;
+      --blue-soft: #eaf3fb;
+      --paper: #ffffff;
+      --ground: #f4f7fa;
+      --ink: #172433;
+      --muted: #5d6d7e;
+      --line: #d6e0ea;
+      --green: #17704a;
+      --green-soft: #e7f6ef;
+      --red: #a43a35;
+      --red-soft: #fff0ee;
+      --amber: #8a5a00;
+      --amber-soft: #fff7df;
+      --shadow: 0 12px 35px rgba(22, 59, 102, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .72; }
+    :focus-visible { outline: 3px solid #f0a43a; outline-offset: 3px; }
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 16px;
+      z-index: 100;
+      background: var(--paper);
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-160%);
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .skip-link:focus-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand {
+      border: 0;
+      padding: 6px 0;
+      background: transparent;
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: .01em;
+      text-align: left;
+    }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 600;
+    }
+    .top-actions { display: flex; gap: 8px; }
+    .main-shell {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 34px 20px 60px;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 54px);
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--navy-2), var(--navy) 60%, #215c96);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      bottom: -170px;
+      border-radius: 50%;
+      border: 42px solid rgba(255, 255, 255, .08);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #cfe6ff;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 820px;
+      margin-bottom: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.06;
+      letter-spacing: -.02em;
+    }
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.2;
+    }
+    h3 { color: var(--navy); line-height: 1.25; }
+    .hero-lead {
+      max-width: 720px;
+      margin-bottom: 24px;
+      color: #e8f3ff;
+      font-size: 1.05rem;
+    }
+    .hero-actions, .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .section { margin-top: 30px; }
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 15px;
+    }
+    .section-heading h2 { margin-bottom: 0; }
+    .muted { color: var(--muted); }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 5px 18px rgba(22, 59, 102, .05);
+    }
+    .card-pad { padding: clamp(20px, 4vw, 32px); }
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 16px;
+    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    label.field { display: grid; gap: 7px; font-weight: 700; color: var(--navy); }
+    input[type="text"] {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #b8c8d7;
+      border-radius: 11px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: #fff;
+    }
+    .module-card {
+      display: flex;
+      min-height: 285px;
+      flex-direction: column;
+      padding: 24px;
+    }
+    .module-card p { color: var(--muted); }
+    .module-card .btn { margin-top: auto; }
+    .module-number {
+      display: inline-grid;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 18px;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-weight: 900;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 18px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef3f7;
+      color: #415466;
+      font-size: .83rem;
+      font-weight: 700;
+    }
+    .btn {
+      min-height: 46px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      padding: 10px 16px;
+      font-weight: 800;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:hover:not(:disabled) { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(43, 111, 179, .22);
+    }
+    .btn-primary:hover:not(:disabled) { background: #235f9d; }
+    .btn-light { background: #fff; color: var(--navy); }
+    .btn-outline { background: #fff; color: var(--navy); border-color: #b9c9d9; }
+    .btn-ghost { background: transparent; color: var(--navy); border-color: transparent; }
+    .hero .btn-outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .55); }
+    .resume-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 20px;
+      border: 1px solid #9ec7ec;
+      border-radius: 15px;
+      background: #edf7ff;
+    }
+    .resume-box p { margin-bottom: 0; }
+    .theory-table { display: grid; gap: 10px; }
+    .theory-row {
+      display: grid;
+      grid-template-columns: minmax(180px, .7fr) minmax(0, 1.5fr);
+      gap: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f7f9fb;
+    }
+    .theory-row strong { color: var(--navy); }
+    .compare-card {
+      padding: 20px;
+      border-left: 4px solid var(--blue);
+    }
+    .example {
+      margin: 10px 0 0;
+      padding: 11px 13px;
+      border-radius: 9px;
+      background: #f5f7f9;
+    }
+    .callout {
+      padding: 16px 18px;
+      border-radius: 13px;
+      background: var(--amber-soft);
+      color: #573b05;
+      border: 1px solid #ecd28b;
+    }
+    .exercise-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+    .exercise-head h1 {
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+    }
+    .progress-wrap { margin: 15px 0 23px; }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .progress-track {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: #dfe7ef;
+    }
+    .progress-bar {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), #4ca1d9);
+      transition: width .25s ease;
+    }
+    .task-card { padding: clamp(20px, 4vw, 34px); }
+    .task-label {
+      margin-bottom: 7px;
+      color: var(--blue);
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .task-prompt { margin-bottom: 19px; font-size: 1.12rem; }
+    .sentence-panel {
+      margin: 18px 0 24px;
+      padding: clamp(16px, 3vw, 24px);
+      border: 1px solid #c8d6e4;
+      border-radius: 14px;
+      background: #fbfdff;
+      color: #13283d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.14rem, 3vw, 1.42rem);
+      line-height: 1.9;
+    }
+    .sentence-builder {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3px 1px;
+    }
+    .word-unit { display: inline-flex; align-items: center; white-space: nowrap; }
+    .word { padding-left: 3px; }
+    .punct-slot, .marker {
+      display: inline-grid;
+      place-items: center;
+      min-height: 44px;
+      margin: 0 1px;
+      border: 1px dashed #93abc1;
+      border-radius: 9px;
+      background: #fff;
+      color: #71869a;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: .98rem;
+      font-weight: 900;
+      vertical-align: middle;
+    }
+    .punct-slot { min-width: 32px; width: 32px; }
+    .marker { min-width: 44px; }
+    .punct-slot::before { content: "·"; }
+    .punct-slot.selected, .marker.selected {
+      border-style: solid;
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+    .punct-slot.selected::before { content: ","; font-family: Georgia, serif; font-size: 1.4rem; }
+    .punct-slot.answer, .marker.answer {
+      border-color: var(--green);
+      background: var(--green-soft);
+      color: var(--green);
+    }
+    .punct-slot.answer::before { content: ","; font-family: Georgia, serif; font-size: 1.4rem; }
+    .punct-slot.wrong, .marker.wrong {
+      border-color: var(--red);
+      background: var(--red-soft);
+      color: var(--red);
+      text-decoration: line-through;
+    }
+    .marked-sentence { line-height: 2.2; }
+    .marker { border-style: solid; border-radius: 50%; margin: 2px 5px; }
+    .options { display: grid; gap: 10px; margin: 14px 0 20px; }
+    .option-btn {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid #bdccda;
+      border-radius: 12px;
+      padding: 12px 15px;
+      background: #fff;
+      color: var(--ink);
+      text-align: left;
+      font-weight: 700;
+    }
+    .option-btn:hover:not(:disabled) { border-color: var(--blue); background: #f4f9fe; }
+    .option-btn.selected { border: 2px solid var(--blue); background: var(--blue-soft); color: var(--navy); }
+    .option-btn.answer { border-color: var(--green); background: var(--green-soft); color: #115a3b; }
+    .option-btn.wrong { border-color: var(--red); background: var(--red-soft); color: #7d2824; }
+    .match-grid { display: grid; gap: 13px; margin-bottom: 22px; }
+    .match-row {
+      display: grid;
+      grid-template-columns: minmax(145px, .65fr) minmax(230px, 1.35fr);
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfcfd;
+    }
+    .match-row strong { color: var(--navy); }
+    .match-row select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #aebfd0;
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .feedback {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 13px;
+      border: 1px solid;
+    }
+    .feedback strong { display: block; margin-bottom: 4px; }
+    .feedback.success { border-color: #8fcaae; background: var(--green-soft); color: #12583b; }
+    .feedback.error { border-color: #e2aaa5; background: var(--red-soft); color: #792a26; }
+    .feedback.hint { border-color: #e6c875; background: var(--amber-soft); color: #644407; }
+    .task-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .attempt-note { color: var(--muted); font-size: .9rem; }
+    .result-hero {
+      padding: clamp(26px, 5vw, 48px);
+      text-align: center;
+    }
+    .score-circle {
+      display: grid;
+      width: 148px;
+      height: 148px;
+      margin: 6px auto 22px;
+      place-items: center;
+      border: 12px solid var(--blue-soft);
+      border-radius: 50%;
+      color: var(--navy);
+      font-size: 2.35rem;
+      font-weight: 900;
+    }
+    .skill-list { display: grid; gap: 13px; }
+    .skill-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 1fr) 2fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .mini-track { height: 9px; border-radius: 99px; background: #e2e9f0; overflow: hidden; }
+    .mini-bar { height: 100%; background: var(--blue); border-radius: inherit; }
+    .issue-list { display: grid; gap: 10px; }
+    .issue-item {
+      padding: 15px 17px;
+      border-left: 4px solid var(--amber);
+      border-radius: 9px;
+      background: #fff9e9;
+    }
+    .empty-good {
+      padding: 20px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      color: #12583b;
+      font-weight: 700;
+    }
+    footer {
+      padding: 24px 20px 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 820px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .module-card { min-height: 0; }
+      .theory-row { grid-template-columns: 1fr; gap: 6px; }
+      .exercise-head { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .main-shell { padding: 22px 13px 42px; }
+      .topbar-inner { padding: 9px 13px; }
+      .top-actions .btn { padding-inline: 10px; }
+      .brand small { display: none; }
+      .profile-grid, .match-row { grid-template-columns: 1fr; }
+      .resume-box { align-items: stretch; flex-direction: column; }
+      .task-actions { align-items: stretch; flex-direction: column-reverse; }
+      .task-actions .btn { width: 100%; }
+      .skill-row { grid-template-columns: 1fr auto; }
+      .skill-row .mini-track { grid-column: 1 / -1; grid-row: 2; }
+      .punct-slot { min-width: 32px; width: 32px; min-height: 44px; }
+      .marker { min-width: 44px; min-height: 44px; }
+      .sentence-panel { line-height: 1.75; }
+    }
+    @media print {
+      .topbar, .no-print, footer { display: none !important; }
+      body { background: #fff; }
+      .main-shell { max-width: none; padding: 0; }
+      .card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#app">К основному содержанию</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="brand" type="button" data-action="home">
+        Русский язык
+        <small>Авторский учебный тренажёр</small>
+      </button>
+      <div class="top-actions no-print">
+        <button class="btn btn-ghost" type="button" data-action="theory">Теория</button>
+        <button class="btn btn-outline" type="button" data-action="home">Разделы</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-shell" id="app" tabindex="-1"></main>
+  <div class="sr-only" id="live" aria-live="polite"></div>
+  <footer>Автор тренажёра — Сергей Дубовицкий · Подготовка к ОГЭ</footer>
+
+  <script>
+    "use strict";
+
+    const STORAGE = {
+      profile: "introTrainer.profile.v1",
+      session: "introTrainer.session.v1",
+      history: "introTrainer.history.v1"
+    };
+
+    const GROUPS = [
+      { id: "confidence", label: "Уверенность", examples: "конечно, безусловно, разумеется, бесспорно, несомненно" },
+      { id: "uncertainty", label: "Неуверенность / предположение", examples: "кажется, вероятно, возможно, может быть, по-видимому, пожалуй" },
+      { id: "feelings", label: "Чувства / эмоции", examples: "к счастью, к сожалению, к удивлению, на беду, к огорчению" },
+      { id: "source", label: "Источник сообщения", examples: "по словам кого-либо, по сообщению, по-моему, по мнению кого-либо" },
+      { id: "order", label: "Порядок и связь мыслей", examples: "во-первых, во-вторых, наконец, с одной стороны, таким образом" },
+      { id: "wording", label: "Способ оформления мысли", examples: "одним словом, иными словами, иначе говоря, короче говоря" },
+      { id: "attention", label: "Привлечение внимания", examples: "послушайте, заметьте, представьте себе, пожалуйста, поймите" }
+    ];
+
+    const GROUP_LABELS = Object.fromEntries(GROUPS.map(group => [group.id, group.label]));
+
+    const ROLE_LABELS = {
+      intro_word: "вводное слово",
+      intro_combination: "вводное сочетание",
+      intro_sentence: "вводное предложение",
+      conjunction: "противительный союз",
+      predicate: "сказуемое / член предложения",
+      adverb_time: "обстоятельство времени (наречие)",
+      gerund_phrase: "деепричастный оборот",
+      subordinate: "придаточная часть сложного предложения"
+    };
+
+    const BASIC = [
+      {
+        id: "b1",
+        raw: "К счастью дождь быстро закончился и на небе появилось яркое солнце",
+        correctText: "К счастью, дождь быстро закончился и на небе появилось яркое солнце.",
+        commas: [1],
+        introOptions: ["К счастью", "быстро", "на небе"],
+        introCorrect: [0],
+        group: "feelings",
+        punctHint: "Вводная конструкция стоит в начале предложения. Проверьте, где она заканчивается.",
+        punctExplanation: "Сочетание «к счастью» выражает чувство говорящего и отделяется запятой. Перед одиночным «и» запятая не ставится: союз соединяет однородные сказуемые «закончился» и «появилось».",
+        introExplanation: "«К счастью» нельзя связать вопросом с членами предложения: это вводное сочетание.",
+        groupExplanation: "Говорящий выражает положительное отношение к событию — радость, облегчение."
+      },
+      {
+        id: "b2",
+        raw: "По словам экскурсовода этот старинный замок был построен в четырнадцатом веке",
+        correctText: "По словам экскурсовода, этот старинный замок был построен в четырнадцатом веке.",
+        commas: [2],
+        introOptions: ["По словам экскурсовода", "этот старинный замок", "в четырнадцатом веке"],
+        introCorrect: [0],
+        group: "source",
+        punctHint: "Найдите конструкцию, которая сообщает, от кого получены сведения.",
+        punctExplanation: "Вводное сочетание «по словам экскурсовода» находится в начале предложения, поэтому после него ставится запятая.",
+        introExplanation: "«По словам экскурсовода» называет источник информации и не входит в грамматическую основу.",
+        groupExplanation: "Конструкция прямо указывает, кому принадлежат сообщаемые сведения."
+      },
+      {
+        id: "b3",
+        raw: "Вы безусловно справитесь с этим сложным заданием если проявите немного терпения",
+        correctText: "Вы, безусловно, справитесь с этим сложным заданием, если проявите немного терпения.",
+        commas: [1, 6],
+        introOptions: ["Вы", "безусловно", "с этим сложным заданием"],
+        introCorrect: [1],
+        group: "confidence",
+        punctHint: "Одно слово нужно выделить с двух сторон; ещё одна запятая разделяет главную и придаточную части.",
+        punctExplanation: "«Безусловно» выделяется с двух сторон. Запятая перед «если» отделяет придаточную часть условия от главной.",
+        introExplanation: "«Безусловно» выражает оценку достоверности и не является членом предложения.",
+        groupExplanation: "Слово показывает полную уверенность говорящего в результате."
+      },
+      {
+        id: "b4",
+        raw: "Во-первых мы должны тщательно составить план работы а во-вторых распределить обязанности",
+        correctText: "Во-первых, мы должны тщательно составить план работы, а во-вторых, распределить обязанности.",
+        commas: [0, 6, 8],
+        introOptions: ["Во-первых", "мы должны", "план работы", "во-вторых"],
+        introCorrect: [0, 3],
+        group: "order",
+        punctHint: "В предложении две парные вводные конструкции и противительный союз «а».",
+        punctExplanation: "После «во-первых» и «во-вторых» ставятся запятые. Запятая перед «а» разделяет однородные сказуемые с противительным отношением.",
+        introExplanation: "Парные конструкции «во-первых» и «во-вторых» обозначают последовательность частей рассуждения.",
+        groupExplanation: "Эти конструкции нумеруют и упорядочивают мысли."
+      },
+      {
+        id: "b5",
+        raw: "Нам кажется удастся завершить работу над проектом к концу текущей недели",
+        correctText: "Нам, кажется, удастся завершить работу над проектом к концу текущей недели.",
+        commas: [0, 1],
+        introOptions: ["Нам", "кажется", "к концу текущей недели"],
+        introCorrect: [1],
+        group: "uncertainty",
+        punctHint: "Сохраните основу «нам удастся завершить» и найдите слово, которое можно изъять.",
+        punctExplanation: "В данном построении «кажется» можно изъять без разрушения основы «нам удастся завершить», поэтому слово обособляется с двух сторон.",
+        introExplanation: "«Кажется» не является сказуемым: сказуемое безличного предложения — «удастся завершить».",
+        groupExplanation: "Говорящий не утверждает результат как достоверный, а выражает предположение."
+      },
+      {
+        id: "b6",
+        raw: "К моему глубокому сожалению важная встреча была отложена на неопределённый срок",
+        correctText: "К моему глубокому сожалению, важная встреча была отложена на неопределённый срок.",
+        commas: [3],
+        introOptions: ["К моему глубокому сожалению", "важная встреча", "на неопределённый срок"],
+        introCorrect: [0],
+        group: "feelings",
+        punctHint: "Вводное сочетание занимает начало предложения целиком.",
+        punctExplanation: "После начального вводного сочетания «к моему глубокому сожалению» ставится запятая.",
+        introExplanation: "Конструкция выражает отношение говорящего к переносу встречи.",
+        groupExplanation: "Это эмоциональная оценка события — сожаление."
+      },
+      {
+        id: "b7",
+        raw: "Одним словом всё наше долгое путешествие удалось на славу",
+        correctText: "Одним словом, всё наше долгое путешествие удалось на славу.",
+        commas: [1],
+        introOptions: ["Одним словом", "долгое путешествие", "на славу"],
+        introCorrect: [0],
+        group: "wording",
+        punctHint: "Начальная конструкция подводит краткий итог сказанному.",
+        punctExplanation: "Вводное сочетание «одним словом» в начале предложения отделяется запятой.",
+        introExplanation: "«Одним словом» показывает, как говорящий формулирует итог.",
+        groupExplanation: "Сочетание служит способом краткого оформления мысли."
+      },
+      {
+        id: "b8",
+        raw: "Пожалуйста внимательно прочитайте инструкцию перед началом выполнения лабораторной работы",
+        correctText: "Пожалуйста, внимательно прочитайте инструкцию перед началом выполнения лабораторной работы.",
+        commas: [0],
+        introOptions: ["Пожалуйста", "внимательно", "перед началом"],
+        introCorrect: [0],
+        group: "attention",
+        punctHint: "Слово вежливого обращения стоит перед побудительной частью.",
+        punctExplanation: "Слово «пожалуйста» отделяется запятой от последующей просьбы.",
+        introExplanation: "В рамках школьной классификации «пожалуйста» относят к словам обращения к собеседнику; членом предложения оно не является.",
+        groupExplanation: "Слово организует обращение к собеседнику и привлекает его внимание."
+      },
+      {
+        id: "b9",
+        raw: "Ветер однако заметно стих и море успокоилось лишь к ночи",
+        correctText: "Ветер, однако, заметно стих, и море успокоилось лишь к ночи.",
+        commas: [0, 1, 3],
+        introOptions: ["Ветер", "однако", "лишь к ночи"],
+        introCorrect: [1],
+        group: "feelings",
+        punctHint: "Слово внутри первой части выражает оттенок удивления; затем найдите границу двух грамматических основ.",
+        punctExplanation: "В середине предложения «однако» имеет вводное значение и обособляется. Перед «и» ставится запятая между частями ССП: «ветер стих» и «море успокоилось».",
+        introExplanation: "В позиции внутри предложения «однако» можно изъять; здесь оно не соединяет части, а выражает оценочный оттенок.",
+        groupExplanation: "Вводное «однако» передаёт эмоциональный оттенок удивления или несоответствия ожиданию."
+      },
+      {
+        id: "b10",
+        raw: "Вы вероятно уже слышали эту интересную новость от наших коллег",
+        correctText: "Вы, вероятно, уже слышали эту интересную новость от наших коллег.",
+        commas: [0, 1],
+        introOptions: ["Вы", "вероятно", "от наших коллег"],
+        introCorrect: [1],
+        group: "uncertainty",
+        punctHint: "Одно слово выражает предположение и находится внутри предложения.",
+        punctExplanation: "Вводное слово «вероятно» выделяется запятыми с двух сторон.",
+        introExplanation: "«Вероятно» можно убрать; грамматическая основа «вы слышали» сохраняется.",
+        groupExplanation: "Слово выражает предположение, а не полную уверенность."
+      }
+    ];
+
+    const ADVANCED = [
+      {
+        id: "a1",
+        marked: "Погода (1) к вечеру испортилась (2) однако (3) экскурсию решили не отменять (4) хотя небо (5) казалось (6) полностью затянулось тучами.",
+        correctText: "Погода к вечеру испортилась, однако экскурсию решили не отменять, хотя небо, казалось, полностью затянулось тучами.",
+        positions: [2, 4, 5, 6],
+        hint: "«Однако» стоит между частями и работает как союз. В обороте с «казалось» сохраните основу «небо затянулось».",
+        explanation: "Запятая 2 ставится перед союзом «однако», 4 — перед придаточным с «хотя», 5 и 6 обособляют вводное «казалось». После союза «однако» в позиции 3 запятая не нужна.",
+        classItems: [
+          { label: "«однако»", correct: "conjunction", options: ["intro_word", "conjunction", "predicate"] },
+          { label: "«казалось»", correct: "intro_word", options: ["intro_word", "predicate", "adverb_time"] }
+        ],
+        classHint: "Проверьте, соединяет ли слово части и входит ли оно в грамматическую основу.",
+        classExplanation: "«Однако» соединяет части и равно союзу «но». «Казалось» можно изъять: остаётся основа «небо затянулось»; это вводное слово."
+      },
+      {
+        id: "a2",
+        marked: "Задача (1) таким образом (2) решена правильно (3) и (4) следовательно (5) мы можем переходить к следующему разделу.",
+        correctText: "Задача, таким образом, решена правильно, и, следовательно, мы можем переходить к следующему разделу.",
+        positions: [1, 2, 3, 4, 5],
+        hint: "В предложении две основы и две вводные конструкции, каждая находится внутри своей части.",
+        explanation: "Позиции 1–2 и 4–5 обособляют вводные конструкции. Позиция 3 разделяет части ССП: «задача решена» и «мы можем переходить».",
+        classItems: [
+          { label: "«таким образом»", correct: "intro_combination", options: ["intro_combination", "predicate", "adverb_time"] },
+          { label: "«следовательно»", correct: "intro_word", options: ["intro_word", "conjunction", "predicate"] }
+        ],
+        classHint: "Обе конструкции показывают связь и вывод в рассуждении.",
+        classExplanation: "«Таким образом» — вводное сочетание, «следовательно» — вводное слово со значением логического вывода."
+      },
+      {
+        id: "a3",
+        marked: "С одной стороны (1) эта книга содержит ценный исторический материал (2) но (3) с другой стороны (4) язык автора слишком сложен для восприятия.",
+        correctText: "С одной стороны, эта книга содержит ценный исторический материал, но, с другой стороны, язык автора слишком сложен для восприятия.",
+        positions: [1, 2, 3, 4],
+        hint: "Парные конструкции организуют противопоставление двух сторон рассуждения.",
+        explanation: "Позиции 1, 3 и 4 связаны с парными вводными сочетаниями; позиция 2 разделяет части ССП перед союзом «но».",
+        classItems: [
+          { label: "«с одной стороны»", correct: "intro_combination", options: ["intro_combination", "adverb_time", "predicate"] },
+          { label: "«с другой стороны»", correct: "intro_combination", options: ["intro_combination", "subordinate", "predicate"] }
+        ],
+        classHint: "Здесь речь идёт не о пространственном расположении, а о частях рассуждения.",
+        classExplanation: "Обе конструкции вводные: они обозначают порядок и соотношение мыслей."
+      },
+      {
+        id: "a4",
+        marked: "Туристы (1) по-видимому (2) сбились с маршрута (3) и (4) остановившись у ручья (5) стали изучать карту местности.",
+        correctText: "Туристы, по-видимому, сбились с маршрута и, остановившись у ручья, стали изучать карту местности.",
+        positions: [1, 2, 4, 5],
+        hint: "Союз «и» соединяет однородные сказуемые, а деепричастный оборот начинается сразу после союза.",
+        explanation: "Позиции 1–2 обособляют «по-видимому», 4–5 — деепричастный оборот. В позиции 3 запятая не ставится: «сбились» и «стали изучать» — однородные сказуемые.",
+        classItems: [
+          { label: "«по-видимому»", correct: "intro_word", options: ["intro_word", "adverb_time", "predicate"] },
+          { label: "«остановившись у ручья»", correct: "gerund_phrase", options: ["gerund_phrase", "intro_combination", "subordinate"] }
+        ],
+        classHint: "Одна конструкция выражает предположение, другая обозначает добавочное действие.",
+        classExplanation: "«По-видимому» — вводное слово; «остановившись у ручья» — деепричастный оборот."
+      },
+      {
+        id: "a5",
+        marked: "Он (1) правда (2) не любил распространяться о своих успехах (3) но в этот раз (4) к общему удивлению (5) подробно рассказал о поездке.",
+        correctText: "Он, правда, не любил распространяться о своих успехах, но в этот раз, к общему удивлению, подробно рассказал о поездке.",
+        positions: [1, 2, 3, 4, 5],
+        hint: "Найдите две вводные конструкции и противительный союз между однородными сказуемыми.",
+        explanation: "Позиции 1–2 и 4–5 обособляют вводные конструкции. Позиция 3 нужна перед союзом «но», соединяющим однородные сказуемые.",
+        classItems: [
+          { label: "«правда»", correct: "intro_word", options: ["intro_word", "conjunction", "predicate"] },
+          { label: "«к общему удивлению»", correct: "intro_combination", options: ["intro_combination", "adverb_time", "subordinate"] }
+        ],
+        classHint: "Обе конструкции можно изъять без разрушения основы «он не любил, но рассказал».",
+        classExplanation: "«Правда» — вводное слово со значением оговорки; «к общему удивлению» — вводное сочетание, выражающее эмоцию."
+      },
+      {
+        id: "a6",
+        marked: "Вы (1) вероятно (2) спросите меня (3) почему я не сделал этого раньше (4) и (5) будете абсолютно правы.",
+        correctText: "Вы, вероятно, спросите меня, почему я не сделал этого раньше, и будете абсолютно правы.",
+        positions: [1, 2, 3, 4],
+        hint: "Придаточная часть стоит между двумя однородными сказуемыми главной части.",
+        explanation: "Позиции 1–2 обособляют «вероятно», 3 открывает придаточную часть, 4 закрывает её. В позиции 5 запятая не нужна: «спросите» и «будете правы» связаны одиночным «и».",
+        classItems: [
+          { label: "«вероятно»", correct: "intro_word", options: ["intro_word", "adverb_time", "predicate"] },
+          { label: "«почему я не сделал этого раньше»", correct: "subordinate", options: ["subordinate", "intro_sentence", "gerund_phrase"] }
+        ],
+        classHint: "Одна единица выражает предположение, другая зависит от слова «спросите».",
+        classExplanation: "«Вероятно» — вводное слово. Часть с союзным словом «почему» является придаточной изъяснительной."
+      },
+      {
+        id: "a7",
+        marked: "Мой спутник (1) как мне показалось (2) немного растерялся (3) услышав такой вопрос (4) но быстро взял себя в руки.",
+        correctText: "Мой спутник, как мне показалось, немного растерялся, услышав такой вопрос, но быстро взял себя в руки.",
+        positions: [1, 2, 3, 4],
+        hint: "Вводное предложение и деепричастный оборот нужно обособить; перед «но» отдельной дополнительной запятой не требуется.",
+        explanation: "Позиции 1–2 обособляют вводное предложение, 3–4 — деепричастный оборот. Запятая 4 одновременно стоит перед союзом «но» между однородными сказуемыми.",
+        classItems: [
+          { label: "«как мне показалось»", correct: "intro_sentence", options: ["intro_sentence", "subordinate", "intro_word"] },
+          { label: "«услышав такой вопрос»", correct: "gerund_phrase", options: ["gerund_phrase", "intro_combination", "predicate"] }
+        ],
+        classHint: "Первая конструкция имеет собственную предикативную основу, вторая обозначает добавочное действие.",
+        classExplanation: "«Как мне показалось» — вводное предложение; «услышав такой вопрос» — деепричастный оборот."
+      },
+      {
+        id: "a8",
+        marked: "Наконец (1) экспедиция достигла цели (2) откуда откроется (3) я надеюсь (4) незабываемый вид на долину.",
+        correctText: "Наконец экспедиция достигла цели, откуда откроется, я надеюсь, незабываемый вид на долину.",
+        positions: [2, 3, 4],
+        hint: "«Наконец» означает «после долгого ожидания» и отвечает на обстоятельственный вопрос.",
+        explanation: "В позиции 1 запятая не нужна: «наконец» — обстоятельство времени. Позиция 2 отделяет придаточную часть, 3–4 обособляют вводное предложение «я надеюсь».",
+        classItems: [
+          { label: "«наконец»", correct: "adverb_time", options: ["adverb_time", "intro_word", "conjunction"] },
+          { label: "«я надеюсь»", correct: "intro_sentence", options: ["intro_sentence", "subordinate", "predicate"] }
+        ],
+        classHint: "Попробуйте заменить «наконец» сочетанием «после долгого ожидания».",
+        classExplanation: "«Наконец» здесь член предложения, а «я надеюсь» — вводное предложение, выражающее отношение говорящего."
+      },
+      {
+        id: "a9",
+        marked: "Это решение (1) между прочим (2) приняли единогласно (3) хотя оно (4) по словам присутствующих (5) вызвало много споров.",
+        correctText: "Это решение, между прочим, приняли единогласно, хотя оно, по словам присутствующих, вызвало много споров.",
+        positions: [1, 2, 3, 4, 5],
+        hint: "В главной и придаточной частях находится по одной вводной конструкции.",
+        explanation: "Позиции 1–2 и 4–5 обособляют вводные конструкции; позиция 3 отделяет придаточную уступительную часть с союзом «хотя».",
+        classItems: [
+          { label: "«между прочим»", correct: "intro_combination", options: ["intro_combination", "adverb_time", "predicate"] },
+          { label: "«по словам присутствующих»", correct: "intro_combination", options: ["intro_combination", "subordinate", "gerund_phrase"] }
+        ],
+        classHint: "Первая конструкция оформляет замечание, вторая называет источник сведений.",
+        classExplanation: "Обе единицы являются вводными сочетаниями, но различаются по значению."
+      },
+      {
+        id: "a10",
+        marked: "Стало быть (1) проект одобрен (2) и (3) значит (4) мы можем начинать работу над его практической реализацией.",
+        correctText: "Стало быть, проект одобрен, и, значит, мы можем начинать работу над его практической реализацией.",
+        positions: [1, 2, 3, 4],
+        hint: "Обе конструкции обозначают вывод; между двумя основами стоит союз «и».",
+        explanation: "Позиции 1 и 3–4 обособляют вводные конструкции, позиция 2 разделяет части ССП. «Значит» можно изъять, поэтому оно отделяется и от союза «и».",
+        classItems: [
+          { label: "«стало быть»", correct: "intro_combination", options: ["intro_combination", "predicate", "conjunction"] },
+          { label: "«значит»", correct: "intro_word", options: ["intro_word", "predicate", "adverb_time"] }
+        ],
+        classHint: "Сравните с сочетанием «это значит»: там «значит» было бы сказуемым.",
+        classExplanation: "Здесь «стало быть» и «значит» выражают логический вывод и являются вводными."
+      }
+    ];
+
+    const LABS = [
+      {
+        id: "l1",
+        title: "Синтаксический разбор: базовый № 3",
+        sentence: "Вы, безусловно, справитесь с этим сложным заданием, если проявите немного терпения.",
+        steps: [
+          {
+            id: "features",
+            prompt: "Отметьте все верные характеристики предложения.",
+            mode: "multi",
+            skill: "syntax",
+            options: [
+              { id: "narrative", label: "повествовательное" },
+              { id: "nonexcl", label: "невосклицательное" },
+              { id: "spp", label: "сложноподчинённое" },
+              { id: "condition", label: "с придаточным условия" },
+              { id: "intro", label: "главная часть осложнена вводным словом" },
+              { id: "simple", label: "простое" },
+              { id: "question", label: "вопросительное" }
+            ],
+            correct: ["narrative", "nonexcl", "spp", "condition", "intro"],
+            hint: "Найдите союз «если», две основы и вводное слово в главной части.",
+            explanation: "Это повествовательное невосклицательное СПП с придаточным условия; главная часть осложнена вводным словом «безусловно»."
+          },
+          {
+            id: "bases",
+            prompt: "Выберите грамматические основы.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "вы справитесь; (вы) проявите" },
+              { id: "wrong1", label: "вы безусловно справитесь; терпения" },
+              { id: "wrong2", label: "задание сложное; вы проявите" }
+            ],
+            correct: ["right"],
+            hint: "Во второй части подлежащее не названо, но восстанавливается по форме сказуемого.",
+            explanation: "Первая основа — «вы справитесь». В придаточной определённо-личной части главный член — «проявите»; подразумевается то же действующее лицо."
+          },
+          {
+            id: "scheme",
+            prompt: "Выберите графическую схему.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "[—, вводн., =], (если =)." },
+              { id: "wrong1", label: "[— = и =]." },
+              { id: "wrong2", label: "(Если — =), [=]." }
+            ],
+            correct: ["right"],
+            hint: "Сначала идёт главная часть, затем придаточная с союзом «если».",
+            explanation: "Схема отражает вводное слово внутри главной части и придаточную часть условия после неё."
+          }
+        ]
+      },
+      {
+        id: "l2",
+        title: "Пунктуационный разбор: базовый № 9",
+        sentence: "Ветер, однако, заметно стих, и море успокоилось лишь к ночи.",
+        steps: [
+          {
+            id: "bases",
+            prompt: "Выберите грамматические основы.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "ветер стих; море успокоилось" },
+              { id: "wrong1", label: "ветер заметно; море к ночи" },
+              { id: "wrong2", label: "однако стих; успокоилось к ночи" }
+            ],
+            correct: ["right"],
+            hint: "В каждой части найдите подлежащее и сказуемое.",
+            explanation: "В предложении две основы: «ветер стих» и «море успокоилось»."
+          },
+          {
+            id: "reasons",
+            prompt: "Отметьте все верные объяснения запятых.",
+            mode: "multi",
+            skill: "punctuation",
+            options: [
+              { id: "intro", label: "Две запятые обособляют вводное слово «однако»." },
+              { id: "ssp", label: "Запятая перед «и» разделяет части ССП." },
+              { id: "homogeneous", label: "Запятая перед «и» разделяет однородные сказуемые." },
+              { id: "appeal", label: "«Однако» является обращением." }
+            ],
+            correct: ["intro", "ssp"],
+            hint: "Определите роль «однако» и посчитайте грамматические основы.",
+            explanation: "«Однако» — вводное слово, поэтому обособляется. Перед «и» ставится запятая на границе частей сложносочинённого предложения."
+          },
+          {
+            id: "scheme",
+            prompt: "Выберите схему предложения.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "[—, вводн., =], и [— =]." },
+              { id: "wrong1", label: "[— = и =]." },
+              { id: "wrong2", label: "[вводн. — =], (и — =)." }
+            ],
+            correct: ["right"],
+            hint: "Нужны две равноправные части, соединённые союзом «и».",
+            explanation: "Первая часть осложнена вводным словом; затем союз «и» связывает её со второй частью."
+          }
+        ]
+      },
+      {
+        id: "l3",
+        title: "Синтаксический разбор: повышенный № 2",
+        sentence: "Задача, таким образом, решена правильно, и, следовательно, мы можем переходить к следующему разделу.",
+        steps: [
+          {
+            id: "features",
+            prompt: "Отметьте все верные характеристики.",
+            mode: "multi",
+            skill: "syntax",
+            options: [
+              { id: "narrative", label: "повествовательное" },
+              { id: "nonexcl", label: "невосклицательное" },
+              { id: "ssp", label: "сложносочинённое" },
+              { id: "twointro", label: "обе части осложнены вводными конструкциями" },
+              { id: "spp", label: "сложноподчинённое" },
+              { id: "simple", label: "простое с однородными сказуемыми" }
+            ],
+            correct: ["narrative", "nonexcl", "ssp", "twointro"],
+            hint: "Части соединены сочинительным союзом «и» и имеют разные подлежащие.",
+            explanation: "Это повествовательное невосклицательное ССП; в каждой части есть вводная конструкция."
+          },
+          {
+            id: "bases",
+            prompt: "Выберите грамматические основы.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "задача решена; мы можем переходить" },
+              { id: "wrong1", label: "задача таким образом; мы следовательно" },
+              { id: "wrong2", label: "решена правильно; переходить к разделу" }
+            ],
+            correct: ["right"],
+            hint: "Во второй части сказуемое составное глагольное.",
+            explanation: "Основы: «задача решена» и «мы можем переходить»; во второй части — составное глагольное сказуемое."
+          },
+          {
+            id: "scheme",
+            prompt: "Выберите схему предложения.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "[—, вводн., =], и, вводн., [— =]." },
+              { id: "wrong1", label: "[— = и =]." },
+              { id: "wrong2", label: "[Вводн. — =], (и — =)." }
+            ],
+            correct: ["right"],
+            hint: "Отразите две части ССП и вводную конструкцию внутри каждой.",
+            explanation: "Схема показывает запятую между частями и самостоятельное обособление «таким образом» и «следовательно»."
+          }
+        ]
+      },
+      {
+        id: "l4",
+        title: "Пунктуационный разбор: повышенный № 7",
+        sentence: "Мой спутник, как мне показалось, немного растерялся, услышав такой вопрос, но быстро взял себя в руки.",
+        steps: [
+          {
+            id: "basis",
+            prompt: "Выберите основную грамматическую основу предложения.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "спутник растерялся, но взял себя в руки" },
+              { id: "wrong1", label: "мне показалось; вопрос услышан" },
+              { id: "wrong2", label: "спутник услышал и растерялся" }
+            ],
+            correct: ["right"],
+            hint: "Не включайте вводное предложение и деепричастный оборот в основную грамматическую основу.",
+            explanation: "Основная основа — «спутник растерялся, но взял себя в руки»; сказуемые однородные."
+          },
+          {
+            id: "complications",
+            prompt: "Чем осложнено предложение? Отметьте все верные варианты.",
+            mode: "multi",
+            skill: "recognition",
+            options: [
+              { id: "intro", label: "вводным предложением «как мне показалось»" },
+              { id: "gerund", label: "деепричастным оборотом «услышав такой вопрос»" },
+              { id: "homogeneous", label: "однородными сказуемыми с союзом «но»" },
+              { id: "appeal", label: "обращением «мой спутник»" },
+              { id: "subordinate", label: "придаточной частью с союзом «как»" }
+            ],
+            correct: ["intro", "gerund", "homogeneous"],
+            hint: "«Как мне показалось» не зависит от сказуемого, а «услышав» обозначает добавочное действие.",
+            explanation: "Предложение осложнено вводным предложением, деепричастным оборотом и однородными сказуемыми. «Мой спутник» — подлежащее, а не обращение."
+          },
+          {
+            id: "scheme",
+            prompt: "Выберите графическую схему.",
+            mode: "single",
+            skill: "syntax",
+            options: [
+              { id: "right", label: "[—, вводн., =, |деепр. оборот|, но =]." },
+              { id: "wrong1", label: "[— =], (как — =), но [=]." },
+              { id: "wrong2", label: "[О, — = и =]." }
+            ],
+            correct: ["right"],
+            hint: "Все осложняющие элементы находятся внутри одного простого предложения.",
+            explanation: "Схема отражает вводное предложение, обособленный деепричастный оборот и союз «но» между однородными сказуемыми."
+          }
+        ]
+      }
+    ];
+
+    const MODULES = {
+      basic: { title: "Базовый уровень", subtitle: "Запятые, вводная конструкция и группа по значению", tasks: BASIC, stepsPerTask: 3 },
+      advanced: { title: "Повышенный уровень", subtitle: "Формат с цифровыми позициями и разграничение омонимов", tasks: ADVANCED, stepsPerTask: 2 },
+      lab: { title: "Лаборатория разборов", subtitle: "Пошаговый синтаксический и пунктуационный анализ", tasks: LABS, stepsPerTask: 3 }
+    };
+
+    const SKILL_LABELS = {
+      punctuation: "Пунктуация",
+      recognition: "Распознавание и разграничение",
+      meaning: "Группы по значению",
+      syntax: "Синтаксический разбор"
+    };
+
+    const app = document.getElementById("app");
+    const live = document.getElementById("live");
+    let screen = "home";
+    let currentResult = null;
+    let profile = readStorage(STORAGE.profile, { name: "", className: "" });
+    let session = readStorage(STORAGE.session, null);
+    let history = readStorage(STORAGE.history, []);
+
+    function readStorage(key, fallback) {
+      try {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function writeStorage(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (error) { /* Локальное сохранение может быть запрещено браузером. */ }
+    }
+
+    function removeStorage(key) {
+      try { localStorage.removeItem(key); } catch (error) { /* Нечего удалять. */ }
+    }
+
+    function esc(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function sameSet(a, b) {
+      return a.length === b.length && [...a].sort().every((value, index) => value === [...b].sort()[index]);
+    }
+
+    function announce(message) {
+      live.textContent = "";
+      window.setTimeout(() => { live.textContent = message; }, 20);
+    }
+
+    function scrollTop() {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      app.focus({ preventScroll: true });
+    }
+
+    function groupOptions() {
+      return GROUPS.map(group => ({ id: group.id, label: group.label }));
+    }
+
+    function taskById(moduleId, taskId) {
+      return MODULES[moduleId].tasks.find(task => task.id === taskId);
+    }
+
+    function getStages(moduleId, task) {
+      if (moduleId === "basic") {
+        return [
+          {
+            id: "punctuation",
+            type: "token-punctuation",
+            prompt: "Расставьте запятые: нажмите на нужные промежутки между словами.",
+            skill: "punctuation",
+            answer: task.commas,
+            hint: task.punctHint,
+            explanation: task.punctExplanation
+          },
+          {
+            id: "intro",
+            type: "choice",
+            mode: "multi",
+            prompt: task.introCorrect.length > 1 ? "Выберите все вводные конструкции." : "Выберите вводную конструкцию.",
+            skill: "recognition",
+            options: task.introOptions.map((label, index) => ({ id: String(index), label })),
+            answer: task.introCorrect.map(String),
+            hint: "Попробуйте убрать предполагаемую конструкцию и проверьте, сохраняется ли грамматическая основа.",
+            explanation: task.introExplanation
+          },
+          {
+            id: "meaning",
+            type: "choice",
+            mode: "single",
+            prompt: "Определите группу вводной конструкции по значению.",
+            skill: "meaning",
+            options: groupOptions(),
+            answer: [task.group],
+            hint: "Определите, что выражает говорящий: уверенность, предположение, чувство, источник, порядок, способ оформления или обращение к собеседнику.",
+            explanation: task.groupExplanation
+          }
+        ];
+      }
+      if (moduleId === "advanced") {
+        return [
+          {
+            id: "positions",
+            type: "marked-punctuation",
+            prompt: "Нажмите на номера позиций, в которых должны стоять запятые.",
+            skill: "punctuation",
+            answer: task.positions,
+            hint: task.hint,
+            explanation: task.explanation
+          },
+          {
+            id: "classification",
+            type: "matching",
+            prompt: "Определите синтаксическую роль выделенных элементов.",
+            skill: "recognition",
+            items: task.classItems,
+            hint: task.classHint,
+            explanation: task.classExplanation
+          }
+        ];
+      }
+      return task.steps.map(step => ({
+        ...step,
+        type: "choice",
+        answer: step.correct
+      }));
+    }
+
+    function skillMaxFor(moduleId, taskIds) {
+      const result = {};
+      taskIds.forEach(taskId => {
+        const task = taskById(moduleId, taskId);
+        getStages(moduleId, task).forEach(stage => {
+          result[stage.skill] = (result[stage.skill] || 0) + 1;
+        });
+      });
+      return result;
+    }
+
+    function startModule(moduleId, reviewTaskIds = null) {
+      const allIds = MODULES[moduleId].tasks.map(task => task.id);
+      const taskIds = reviewTaskIds && reviewTaskIds.length ? reviewTaskIds.filter(id => allIds.includes(id)) : allIds;
+      session = {
+        moduleId,
+        taskIds,
+        taskIndex: 0,
+        stageIndex: 0,
+        answer: { selected: [], matches: {} },
+        attempts: 0,
+        locked: false,
+        reveal: false,
+        feedback: null,
+        score: 0,
+        maxScore: taskIds.reduce((sum, id) => sum + getStages(moduleId, taskById(moduleId, id)).length, 0),
+        skills: {},
+        skillMax: skillMaxFor(moduleId, taskIds),
+        issues: [],
+        startedAt: Date.now(),
+        review: Boolean(reviewTaskIds && reviewTaskIds.length)
+      };
+      writeStorage(STORAGE.session, session);
+      screen = "exercise";
+      render();
+      scrollTop();
+    }
+
+    function saveSession() {
+      if (session) writeStorage(STORAGE.session, session);
+    }
+
+    function currentContext() {
+      const taskId = session.taskIds[session.taskIndex];
+      const task = taskById(session.moduleId, taskId);
+      const stages = getStages(session.moduleId, task);
+      return { task, stages, stage: stages[session.stageIndex] };
+    }
+
+    function render() {
+      if (screen === "theory") renderTheory();
+      else if (screen === "exercise" && session) renderExercise();
+      else if (screen === "result" && currentResult) renderResult(currentResult);
+      else renderHome();
+    }
+
+    function renderHome() {
+      screen = "home";
+      const lastByModule = {};
+      history.forEach(item => { if (!lastByModule[item.moduleId]) lastByModule[item.moduleId] = item; });
+      const resumeHtml = session ? `
+        <section class="section resume-box" aria-label="Незавершённая работа">
+          <div>
+            <strong>Есть незавершённая работа</strong>
+            <p>${esc(MODULES[session.moduleId].title)} · задание ${session.taskIndex + 1} из ${session.taskIds.length}</p>
+          </div>
+          <button class="btn btn-primary" type="button" data-action="resume">Продолжить</button>
+        </section>` : "";
+
+      app.innerHTML = `
+        <section class="hero">
+          <p class="eyebrow">9 класс · подготовка к ОГЭ</p>
+          <h1>Вводные слова и конструкции</h1>
+          <p class="hero-lead">Учимся расставлять запятые, определять значение вводных конструкций и отличать их от союзов и членов предложения.</p>
+          <div class="hero-actions">
+            <button class="btn btn-light" type="button" data-action="theory">Открыть краткую теорию</button>
+            <button class="btn btn-outline" type="button" data-action="start" data-module="basic">Начать тренировку</button>
+          </div>
+        </section>
+        ${resumeHtml}
+        <section class="section card card-pad" aria-labelledby="profile-heading">
+          <div class="section-heading">
+            <div>
+              <h2 id="profile-heading">Профиль ученика</h2>
+              <p class="muted">Поля необязательны, но имя попадёт в итоговый отчёт.</p>
+            </div>
+          </div>
+          <div class="profile-grid">
+            <label class="field">Имя
+              <input type="text" id="student-name" maxlength="60" autocomplete="name" value="${esc(profile.name)}" placeholder="Например, Анна">
+            </label>
+            <label class="field">Класс
+              <input type="text" id="student-class" maxlength="20" value="${esc(profile.className)}" placeholder="Например, 9Б">
+            </label>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="modules-heading">
+          <div class="section-heading">
+            <div>
+              <h2 id="modules-heading">Выберите раздел</h2>
+              <p class="muted">Каждый раздел можно проходить отдельно.</p>
+            </div>
+          </div>
+          <div class="grid-3">
+            ${moduleCard("basic", "1", "10 предложений · 30 шагов", "Расставьте запятые, найдите вводную конструкцию и определите её значение.", lastByModule.basic)}
+            ${moduleCard("advanced", "2", "10 предложений · 20 шагов", "Выберите цифровые позиции и разграничьте вводные слова, союзы и члены предложения.", lastByModule.advanced)}
+            ${moduleCard("lab", "3", "4 разбора · 12 шагов", "Поэтапно выполните синтаксический и пунктуационный разбор четырёх предложений.", lastByModule.lab)}
+          </div>
+        </section>`;
+    }
+
+    function moduleCard(id, number, meta, text, last) {
+      return `
+        <article class="card module-card">
+          <span class="module-number" aria-hidden="true">${number}</span>
+          <h3>${esc(MODULES[id].title)}</h3>
+          <p>${esc(text)}</p>
+          <div class="meta-line">
+            <span class="pill">${esc(meta)}</span>
+            ${last ? `<span class="pill">Последний результат: ${last.percent}%</span>` : ""}
+          </div>
+          <button class="btn btn-primary" type="button" data-action="start" data-module="${id}">Открыть раздел</button>
+        </article>`;
+    }
+
+    function renderTheory() {
+      screen = "theory";
+      app.innerHTML = `
+        <section class="exercise-head">
+          <div>
+            <p class="eyebrow" style="color:var(--blue)">Краткий справочник</p>
+            <h1>Как распознать вводную конструкцию</h1>
+            <p class="muted">Не ориентируйтесь только на знакомое слово: решающую роль играет его функция в конкретном предложении.</p>
+          </div>
+          <button class="btn btn-outline no-print" type="button" data-action="home">К разделам</button>
+        </section>
+
+        <section class="card card-pad">
+          <h2>Алгоритм</h2>
+          <ol>
+            <li>Найдите грамматическую основу предложения.</li>
+            <li>Проверьте, можно ли задать вопрос к предполагаемой вводной конструкции.</li>
+            <li>Попробуйте изъять её: основная структура и смысловое сообщение должны сохраниться.</li>
+            <li>Определите значение: уверенность, предположение, чувство, источник, порядок, оформление мысли или обращение к собеседнику.</li>
+            <li>Обособьте вводную конструкцию и отдельно проверьте остальные пунктограммы.</li>
+          </ol>
+          <div class="callout"><strong>Важно.</strong> Вводная конструкция не является членом предложения. Но одно и то же слово в другом контексте может стать союзом, сказуемым или обстоятельством.</div>
+        </section>
+
+        <section class="section card card-pad">
+          <h2>Группы по значению</h2>
+          <div class="theory-table">
+            ${GROUPS.map((group, index) => `
+              <div class="theory-row">
+                <strong>${index + 1}. ${esc(group.label)}</strong>
+                <span>${esc(group.examples)}</span>
+              </div>`).join("")}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><h2>Не перепутайте</h2></div>
+          <div class="grid-2">
+            ${compareCard("Однако", "Однако экскурсию решили не отменять. — союз, равен «но».", "Ветер, однако, стих. — вводное слово внутри предложения.")}
+            ${compareCard("Наконец", "Наконец экспедиция достигла цели. — обстоятельство: «после ожидания».", "Во-первых, проверим условие; наконец, запишем ответ. — порядок мыслей.")}
+            ${compareCard("Казалось", "Небо, казалось, затянулось тучами. — основа «небо затянулось», слово вводное.", "Небо казалось затянутым тучами. — «казалось затянутым» входит в сказуемое.")}
+            ${compareCard("Значит", "Значит, начинаем работу. — вводное слово со значением вывода.", "Это решение значит очень многое. — «значит» является сказуемым.")}
+          </div>
+        </section>
+
+        <section class="section callout">
+          <strong>Слово «действительно» требует контекста.</strong> Оно может выражать подтверждение как вводное слово, но нередко выступает частицей или обстоятельственным словом и не обособляется автоматически.
+        </section>
+        <div class="section action-row no-print">
+          <button class="btn btn-primary" type="button" data-action="start" data-module="basic">Перейти к базовому уровню</button>
+          <button class="btn btn-outline" type="button" data-action="home">Вернуться к разделам</button>
+        </div>`;
+      scrollTop();
+    }
+
+    function compareCard(title, first, second) {
+      return `<article class="card compare-card"><h3>${esc(title)}</h3><p class="example">${esc(first)}</p><p class="example">${esc(second)}</p></article>`;
+    }
+
+    function renderExercise() {
+      const { task, stages, stage } = currentContext();
+      const module = MODULES[session.moduleId];
+      const completedSteps = session.taskIndex * module.stepsPerTask + session.stageIndex;
+      const progress = Math.round((completedSteps / session.maxScore) * 100);
+      app.innerHTML = `
+        <section class="exercise-head">
+          <div>
+            <p class="eyebrow" style="color:var(--blue)">${session.review ? "Работа над ошибками" : "Учебный режим"}</p>
+            <h1>${esc(module.title)}</h1>
+            <p class="muted">${esc(module.subtitle)}</p>
+          </div>
+          <button class="btn btn-outline no-print" type="button" data-action="home">Сохранить и выйти</button>
+        </section>
+        <div class="progress-wrap" aria-label="Прогресс">
+          <div class="progress-meta">
+            <span>Задание ${session.taskIndex + 1} из ${session.taskIds.length} · шаг ${session.stageIndex + 1} из ${stages.length}</span>
+            <span>${progress}%</span>
+          </div>
+          <div class="progress-track"><div class="progress-bar" style="width:${progress}%"></div></div>
+        </div>
+        <section class="card task-card" aria-labelledby="task-title">
+          <p class="task-label">${session.moduleId === "lab" ? esc(task.title) : `Предложение ${session.taskIndex + 1}`}</p>
+          <h2 class="task-prompt" id="task-title">${esc(stage.prompt)}</h2>
+          ${renderTaskReference(task)}
+          ${renderStageInput(task, stage)}
+          ${renderFeedback()}
+          <div class="task-actions no-print">
+            <span class="attempt-note">Попытка ${Math.min(session.attempts + 1, 2)} из 2</span>
+            ${session.locked
+              ? `<button class="btn btn-primary" type="button" data-action="next">${isLastStage() ? "Завершить раздел" : "Продолжить"}</button>`
+              : `<button class="btn btn-primary" type="button" data-action="check">Проверить ответ</button>`}
+          </div>
+        </section>`;
+    }
+
+    function renderTaskReference(task) {
+      if (session.moduleId === "lab") return `<div class="sentence-panel">${esc(task.sentence)}</div>`;
+      if (session.stageIndex === 0) return "";
+      return `<div class="sentence-panel">${esc(task.correctText)}</div>`;
+    }
+
+    function renderStageInput(task, stage) {
+      if (stage.type === "token-punctuation") return renderTokenPunctuation(task, stage);
+      if (stage.type === "marked-punctuation") return renderMarkedPunctuation(task, stage);
+      if (stage.type === "matching") return renderMatching(stage);
+      return renderChoices(stage);
+    }
+
+    function renderTokenPunctuation(task, stage) {
+      const words = task.raw.split(" ");
+      const selected = session.answer.selected.map(Number);
+      return `<div class="sentence-panel sentence-builder" aria-label="Предложение с местами для запятых">
+        ${words.map((word, index) => {
+          const hasSlot = index < words.length - 1;
+          const isSelected = selected.includes(index);
+          const isAnswer = session.reveal && stage.answer.includes(index);
+          const isWrong = session.reveal && isSelected && !stage.answer.includes(index);
+          const classes = ["punct-slot", isSelected ? "selected" : "", isAnswer ? "answer" : "", isWrong ? "wrong" : ""].filter(Boolean).join(" ");
+          return `<span class="word-unit"><span class="word">${esc(word)}</span>${hasSlot ? `<button type="button" class="${classes}" data-action="toggle-slot" data-value="${index}" aria-pressed="${isSelected}" aria-label="Поставить запятую после слова «${esc(word)}»" ${session.locked ? "disabled" : ""}></button>` : "<span>.</span>"}</span>`;
+        }).join("")}
+      </div>`;
+    }
+
+    function renderMarkedPunctuation(task, stage) {
+      const selected = session.answer.selected.map(Number);
+      let html = "";
+      let lastIndex = 0;
+      const regex = /\((\d+)\)/g;
+      let match;
+      while ((match = regex.exec(task.marked)) !== null) {
+        html += esc(task.marked.slice(lastIndex, match.index));
+        const number = Number(match[1]);
+        const isSelected = selected.includes(number);
+        const isAnswer = session.reveal && stage.answer.includes(number);
+        const isWrong = session.reveal && isSelected && !stage.answer.includes(number);
+        const classes = ["marker", isSelected ? "selected" : "", isAnswer ? "answer" : "", isWrong ? "wrong" : ""].filter(Boolean).join(" ");
+        html += `<button type="button" class="${classes}" data-action="toggle-marker" data-value="${number}" aria-pressed="${isSelected}" aria-label="Позиция ${number}" ${session.locked ? "disabled" : ""}>${number}</button>`;
+        lastIndex = regex.lastIndex;
+      }
+      html += esc(task.marked.slice(lastIndex));
+      return `<div class="sentence-panel marked-sentence">${html}</div>`;
+    }
+
+    function renderChoices(stage) {
+      const selected = session.answer.selected.map(String);
+      return `<div class="options" role="group" aria-label="Варианты ответа">
+        ${stage.options.map(option => {
+          const id = String(option.id);
+          const isSelected = selected.includes(id);
+          const isAnswer = session.reveal && stage.answer.map(String).includes(id);
+          const isWrong = session.reveal && isSelected && !stage.answer.map(String).includes(id);
+          const classes = ["option-btn", isSelected ? "selected" : "", isAnswer ? "answer" : "", isWrong ? "wrong" : ""].filter(Boolean).join(" ");
+          return `<button type="button" class="${classes}" data-action="toggle-choice" data-value="${esc(id)}" data-mode="${stage.mode}" aria-pressed="${isSelected}" ${session.locked ? "disabled" : ""}>${esc(option.label)}</button>`;
+        }).join("")}
+      </div>`;
+    }
+
+    function renderMatching(stage) {
+      return `<div class="match-grid">
+        ${stage.items.map((item, index) => {
+          const value = session.answer.matches[String(index)] || "";
+          const answerNote = session.reveal ? `<div class="muted">Верно: ${esc(ROLE_LABELS[item.correct])}</div>` : "";
+          return `<label class="match-row">
+            <strong>${esc(item.label)}</strong>
+            <span>
+              <select data-action="match" data-index="${index}" ${session.locked ? "disabled" : ""}>
+                <option value="">Выберите роль</option>
+                ${item.options.map(role => `<option value="${role}" ${value === role ? "selected" : ""}>${esc(ROLE_LABELS[role])}</option>`).join("")}
+              </select>
+              ${answerNote}
+            </span>
+          </label>`;
+        }).join("")}
+      </div>`;
+    }
+
+    function renderFeedback() {
+      if (!session.feedback) return "";
+      const type = session.feedback.type;
+      const symbol = type === "success" ? "✓" : type === "hint" ? "Подсказка" : "Ответ разобран";
+      return `<div class="feedback ${type}" role="status"><strong>${esc(symbol)}</strong>${esc(session.feedback.text)}</div>`;
+    }
+
+    function isLastStage() {
+      const { stages } = currentContext();
+      return session.taskIndex === session.taskIds.length - 1 && session.stageIndex === stages.length - 1;
+    }
+
+    function toggleSelected(value, mode) {
+      if (!session || session.locked) return;
+      const stringValue = String(value);
+      let selected = session.answer.selected.map(String);
+      if (mode === "single") selected = [stringValue];
+      else selected = selected.includes(stringValue) ? selected.filter(item => item !== stringValue) : [...selected, stringValue];
+      session.answer.selected = selected;
+      saveSession();
+      renderExercise();
+    }
+
+    function validateAnswer(stage) {
+      if (stage.type === "matching") {
+        const values = stage.items.map((item, index) => session.answer.matches[String(index)] || "");
+        if (values.some(value => !value)) return { empty: true, correct: false };
+        return { empty: false, correct: values.every((value, index) => value === stage.items[index].correct) };
+      }
+      const selected = session.answer.selected.map(String);
+      if (!selected.length) return { empty: true, correct: false };
+      return { empty: false, correct: sameSet(selected, stage.answer.map(String)) };
+    }
+
+    function recordIssue(task, stage) {
+      const key = `${task.id}:${stage.id}`;
+      if (session.issues.some(issue => issue.key === key)) return;
+      session.issues.push({
+        key,
+        taskId: task.id,
+        taskTitle: session.moduleId === "lab" ? task.title : `Предложение ${session.taskIndex + 1}`,
+        step: stage.prompt,
+        explanation: stage.explanation
+      });
+    }
+
+    function checkAnswer() {
+      if (!session || session.locked) return;
+      const { task, stage } = currentContext();
+      const validation = validateAnswer(stage);
+      if (validation.empty) {
+        session.feedback = { type: "hint", text: "Сначала выберите хотя бы один вариант или заполните все строки." };
+        renderExercise();
+        announce(session.feedback.text);
+        return;
+      }
+
+      session.attempts += 1;
+      if (validation.correct) {
+        const points = session.attempts === 1 ? 1 : 0.5;
+        session.score += points;
+        session.skills[stage.skill] = (session.skills[stage.skill] || 0) + points;
+        session.locked = true;
+        session.reveal = true;
+        session.feedback = { type: "success", text: stage.explanation };
+        announce(`Верно. ${stage.explanation}`);
+      } else {
+        recordIssue(task, stage);
+        if (session.attempts < 2) {
+          session.feedback = { type: "hint", text: stage.hint };
+          announce(`Пока неверно. ${stage.hint}`);
+        } else {
+          session.locked = true;
+          session.reveal = true;
+          session.feedback = { type: "error", text: stage.explanation };
+          announce(`Правильный ответ показан. ${stage.explanation}`);
+        }
+      }
+      saveSession();
+      renderExercise();
+    }
+
+    function nextStage() {
+      if (!session || !session.locked) return;
+      if (isLastStage()) {
+        finishModule();
+        return;
+      }
+      const { stages } = currentContext();
+      if (session.stageIndex < stages.length - 1) session.stageIndex += 1;
+      else {
+        session.taskIndex += 1;
+        session.stageIndex = 0;
+      }
+      session.answer = { selected: [], matches: {} };
+      session.attempts = 0;
+      session.locked = false;
+      session.reveal = false;
+      session.feedback = null;
+      saveSession();
+      renderExercise();
+      scrollTop();
+    }
+
+    function finishModule() {
+      const percent = Math.round((session.score / session.maxScore) * 100);
+      const errorTaskIds = [...new Set(session.issues.map(issue => issue.taskId))];
+      const result = {
+        moduleId: session.moduleId,
+        moduleTitle: MODULES[session.moduleId].title,
+        score: Math.round(session.score * 10) / 10,
+        maxScore: session.maxScore,
+        percent,
+        skills: session.skills,
+        skillMax: session.skillMax,
+        issues: session.issues,
+        errorTaskIds,
+        student: { ...profile },
+        durationSec: Math.max(1, Math.round((Date.now() - session.startedAt) / 1000)),
+        completedAt: new Date().toISOString(),
+        review: session.review
+      };
+      history = [result, ...history].slice(0, 12);
+      writeStorage(STORAGE.history, history);
+      removeStorage(STORAGE.session);
+      session = null;
+      currentResult = result;
+      screen = "result";
+      renderResult(result);
+      scrollTop();
+      announce(`Раздел завершён. Результат ${percent} процентов.`);
+    }
+
+    function resultStatus(percent) {
+      if (percent >= 90) return "Отличный результат: правило применяется уверенно.";
+      if (percent >= 75) return "Хороший результат: осталось разобрать отдельные трудные случаи.";
+      if (percent >= 60) return "Основа усвоена, но полезно пройти работу над ошибками.";
+      return "Стоит вернуться к алгоритму и повторить раздел без спешки.";
+    }
+
+    function formatDuration(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const rest = seconds % 60;
+      return minutes ? `${minutes} мин ${rest} с` : `${rest} с`;
+    }
+
+    function renderResult(result) {
+      screen = "result";
+      const skills = Object.keys(result.skillMax).filter(skill => result.skillMax[skill] > 0);
+      app.innerHTML = `
+        <section class="card result-hero">
+          <p class="eyebrow" style="color:var(--blue)">Раздел завершён</p>
+          <h1 style="color:var(--navy);font-size:clamp(2rem,5vw,3.2rem)">${esc(result.moduleTitle)}</h1>
+          <div class="score-circle" aria-label="Результат ${result.percent} процентов">${result.percent}%</div>
+          <p><strong>${esc(resultStatus(result.percent))}</strong></p>
+          <p class="muted">${esc(result.student.name || "Ученик")}${result.student.className ? ` · ${esc(result.student.className)}` : ""} · ${result.score} из ${result.maxScore} баллов · ${formatDuration(result.durationSec)}</p>
+        </section>
+
+        <section class="section card card-pad">
+          <h2>Результаты по умениям</h2>
+          <div class="skill-list">
+            ${skills.map(skill => {
+              const value = result.skills[skill] || 0;
+              const max = result.skillMax[skill];
+              const percent = Math.round((value / max) * 100);
+              return `<div class="skill-row"><strong>${esc(SKILL_LABELS[skill])}</strong><div class="mini-track"><div class="mini-bar" style="width:${percent}%"></div></div><span>${percent}%</span></div>`;
+            }).join("")}
+          </div>
+        </section>
+
+        <section class="section card card-pad">
+          <h2>Затруднения и объяснения</h2>
+          ${result.issues.length ? `<div class="issue-list">${result.issues.map(issue => `<article class="issue-item"><strong>${esc(issue.taskTitle)}: ${esc(issue.step)}</strong><div>${esc(issue.explanation)}</div></article>`).join("")}</div>` : `<div class="empty-good">Все задания выполнены без ошибок с первой попытки.</div>`}
+        </section>
+
+        <section class="section action-row no-print">
+          ${result.errorTaskIds.length ? `<button class="btn btn-primary" type="button" data-action="review-errors">Пройти работу над ошибками</button>` : ""}
+          <button class="btn btn-outline" type="button" data-action="repeat-module">Повторить весь раздел</button>
+          <button class="btn btn-outline" type="button" data-action="copy-result">Скопировать результат</button>
+          <button class="btn btn-outline" type="button" data-action="print">Распечатать</button>
+          <button class="btn btn-ghost" type="button" data-action="home">К разделам</button>
+        </section>`;
+    }
+
+    function resultReport(result) {
+      const date = new Date(result.completedAt).toLocaleString("ru-RU");
+      const lines = [
+        "Тренажёр «Вводные слова и конструкции»",
+        `Ученик: ${result.student.name || "не указано"}`,
+        `Класс: ${result.student.className || "не указан"}`,
+        `Раздел: ${result.moduleTitle}`,
+        `Результат: ${result.percent}% (${result.score} из ${result.maxScore})`,
+        `Время: ${formatDuration(result.durationSec)}`,
+        `Дата: ${date}`
+      ];
+      Object.keys(result.skillMax).forEach(skill => {
+        const value = result.skills[skill] || 0;
+        const max = result.skillMax[skill];
+        lines.push(`${SKILL_LABELS[skill]}: ${Math.round((value / max) * 100)}%`);
+      });
+      lines.push(result.issues.length ? `Затруднения: ${result.issues.map(issue => issue.taskTitle).join(", ")}` : "Затруднения: нет");
+      return lines.join("\n");
+    }
+
+    async function copyResult() {
+      if (!currentResult) return;
+      const text = resultReport(currentResult);
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      announce("Результат скопирован.");
+      const button = document.querySelector('[data-action="copy-result"]');
+      if (button) {
+        const old = button.textContent;
+        button.textContent = "Скопировано";
+        window.setTimeout(() => { button.textContent = old; }, 1500);
+      }
+    }
+
+    function saveProfileFromInputs() {
+      const nameInput = document.getElementById("student-name");
+      const classInput = document.getElementById("student-class");
+      if (!nameInput || !classInput) return;
+      profile = { name: nameInput.value.trim(), className: classInput.value.trim() };
+      writeStorage(STORAGE.profile, profile);
+    }
+
+    app.addEventListener("click", event => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      const action = button.dataset.action;
+      if (action === "home") {
+        saveProfileFromInputs();
+        screen = "home";
+        renderHome();
+        scrollTop();
+      } else if (action === "theory") {
+        saveProfileFromInputs();
+        renderTheory();
+      } else if (action === "start") {
+        saveProfileFromInputs();
+        startModule(button.dataset.module);
+      } else if (action === "resume") {
+        screen = "exercise";
+        renderExercise();
+        scrollTop();
+      } else if (action === "toggle-slot") {
+        toggleSelected(button.dataset.value, "multi");
+      } else if (action === "toggle-marker") {
+        toggleSelected(button.dataset.value, "multi");
+      } else if (action === "toggle-choice") {
+        toggleSelected(button.dataset.value, button.dataset.mode);
+      } else if (action === "check") {
+        checkAnswer();
+      } else if (action === "next") {
+        nextStage();
+      } else if (action === "repeat-module" && currentResult) {
+        startModule(currentResult.moduleId);
+      } else if (action === "review-errors" && currentResult) {
+        startModule(currentResult.moduleId, currentResult.errorTaskIds);
+      } else if (action === "copy-result") {
+        copyResult();
+      } else if (action === "print") {
+        window.print();
+      }
+    });
+
+    app.addEventListener("change", event => {
+      if (event.target.matches("#student-name, #student-class")) saveProfileFromInputs();
+      if (event.target.matches('select[data-action="match"]') && session && !session.locked) {
+        session.answer.matches[event.target.dataset.index] = event.target.value;
+        saveSession();
+      }
+    });
+
+    document.querySelectorAll("header [data-action]").forEach(button => {
+      button.addEventListener("click", () => {
+        if (button.dataset.action === "theory") renderTheory();
+        else {
+          screen = "home";
+          renderHome();
+          scrollTop();
+        }
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
